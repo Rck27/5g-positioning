@@ -1,0 +1,40 @@
+{
+  "DL": [
+    {
+      "timestamp": "2025-03-14T12:14:33.127000Z"
+    },
+    {
+      "timestamp": "2025-03-14T12:14:33.444000Z",
+      "NR_UE_PCI_0": 48.0,
+      "NR_UE_RSRP_0": -87.1,
+      "NR_UE_RSRQ_0": -11.2,
+      "NR_UE_SINR_0": 7.3,
+      "NR_UE_Nbr_RSRQ_0": -16.3,
+      "NR_UE_Nbr_RSRP_0": -97.3,
+      "NR_UE_Nbr_PCI_0": 76.0
+    }
+  ],
+  "UL": [
+    {
+      "timestamp": "1970-01-01T00:00:00.000045730Z",
+      "NR_UE_PCI_0": 48.0,
+      "NR_UE_RSRP_0": -80.7,
+      "NR_UE_RSRQ_0": -10.5,
+      "NR_UE_SINR_0": 12.0,
+      "NR_UE_Nbr_RSRQ_0": -20.6,
+      "NR_UE_Nbr_RSRP_0": -93.6,
+      "NR_UE_Nbr_PCI_0": 76.0
+    },
+    {
+      "timestamp": "NaTZ"
+    }
+  ],
+  "Scanner": [
+    {
+      "timestamp": "2025-03-14T12:14:32.955000Z"
+    },
+    {
+      "timestamp": "2025-03-14T12:14:32.955000Z"
+    }
+  ]
+}

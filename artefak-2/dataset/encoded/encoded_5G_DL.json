@@ -1,0 +1,80 @@
+{
+    "NR_UE_RI_DL_0": {
+        "MISSING_VALUE": 0,
+        "Rank1": 1,
+        "Rank2": 2,
+        "Rank3": 3,
+        "Rank4": 4
+    },
+    "NR_UE_Modulation_Avg_DL_0": {
+        "16QAM": 0,
+        "256QAM": 1,
+        "64QAM": 2,
+        "MISSING_VALUE": 3,
+        "QPSK": 4
+    },
+    "NR_UE_CCE_AggregationLev_0": {
+        "LEVEL_1": 0,
+        "LEVEL_16": 1,
+        "LEVEL_2": 2,
+        "LEVEL_4": 3,
+        "LEVEL_8": 4,
+        "MISSING_VALUE": 5
+    },
+    "NR_UE_MCS_DL_0": {
+        "0 (QPSK)": 0,
+        "1 (QPSK)": 1,
+        "10 (16QAM OR 64QAM / Low SE -QPSK)": 2,
+        "11 (16QAM OR 64QAM / Low SE -QPSK)": 3,
+        "12 (16QAM OR 64QAM / Low SE -QPSK)": 4,
+        "13 (16QAM OR 64QAM / Low SE -QPSK)": 5,
+        "14 (16QAM OR 64QAM / Low SE -QPSK)": 6,
+        "15 (16QAM OR 64QAM OR 256QAM / Low SE -16QAM)": 7,
+        "16 (16QAM OR 64QAM OR 256QAM / Low SE -16QAM)": 8,
+        "17 (64QAM OR 256QAM / Low SE -16QAM)": 9,
+        "18 (64QAM OR 256QAM / Low SE -16QAM)": 10,
+        "19 (64QAM OR 256QAM / Low SE -16QAM)": 11,
+        "2 (QPSK)": 12,
+        "20 (64QAM OR 256QAM / Low SE -16QAM)": 13,
+        "21 (64QAM OR 256QAM / Low SE -16QAM)": 14,
+        "22 (64QAM OR 256QAM / Low SE -16QAM)": 15,
+        "23 (64QAM OR 256QAM OR 1024 QAM / Low SE -64QAM)": 16,
+        "24 (64QAM OR 256QAM OR 1024 QAM / Low SE -64QAM)": 17,
+        "25 (64QAM OR 256QAM OR 1024 QAM / Low SE -64QAM)": 18,
+        "26 (64QAM OR 256QAM OR 1024 QAM / Low SE -64QAM)": 19,
+        "27 (64QAM OR 256QAM / Low SE -64QAM)": 20,
+        "28 (64QAM / Low SE -64QAM)": 21,
+        "3 (QPSK OR 16QAM / Low SE -QPSK)": 22,
+        "4 (QPSK OR 16QAM / Low SE -QPSK)": 23,
+        "5 (QPSK OR 16QAM / Low SE -QPSK)": 24,
+        "6 (QPSK OR 16QAM OR 64QAM / Low SE -QPSK)": 25,
+        "7 (QPSK OR 16QAM OR 64QAM / Low SE -QPSK)": 26,
+        "8 (QPSK OR 16QAM OR 64QAM / Low SE -QPSK)": 27,
+        "9 (QPSK OR 16QAM OR 64QAM / Low SE -QPSK)": 28,
+        "MISSING_VALUE": 29
+    },
+    "NR_RRC_MsgType": {
+        " BCCH-BCH MIB": 0,
+        " BCCH-DL_SCH SIB1": 1,
+        " BCCH-DL_SCH SIB2": 2,
+        " DL-CCCH RRCSetup": 3,
+        " DL-DCCH DLInformationTransfer": 4,
+        " DL-DCCH RRCReconfiguration": 5,
+        " DL-DCCH RRCRelease": 6,
+        " DL-DCCH SecurityModeCommand": 7,
+        " DL-DCCH UECapabilityEnquiry": 8,
+        " UL-CCCH RRCReestablishmentRequest": 9,
+        " UL-CCCH RRCSetupRequest": 10,
+        " UL-DCCH MeasurementReport": 11,
+        " UL-DCCH RRCReconfigurationComplete": 12,
+        " UL-DCCH RRCSetupComplete": 13,
+        " UL-DCCH SecurityModeComplete": 14,
+        " UL-DCCH UECapabilityInformation": 15,
+        " UL-DCCH ULInformationTransfer": 16,
+        "MISSING_VALUE": 17
+    },
+    "NR_UE_RRCReEst_EndResult": {
+        "MISSING_VALUE": 0,
+        "Re-establishment failure after Request": 1
+    }
+}

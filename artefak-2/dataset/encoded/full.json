@@ -1,0 +1,27 @@
+{
+    "Technology_Mode": {
+        "5GSA": 0
+    },
+    "NR_UE_Modulation_Avg_DL_0": {
+        "16QAM": 0,
+        "256QAM": 1,
+        "64QAM": 2,
+        "AGG_MISSING": 3,
+        "QPSK": 4
+    },
+    "NR_UE_CCE_AggregationLev_0": {
+        "FINAL_MISSING": 0,
+        "LEVEL_1": 1,
+        "LEVEL_16": 2,
+        "LEVEL_2": 3,
+        "LEVEL_4": 4,
+        "LEVEL_8": 5
+    },
+    "NR_UE_RI_DL_0": {
+        "FINAL_MISSING": 0,
+        "Rank1": 1,
+        "Rank2": 2,
+        "Rank3": 3,
+        "Rank4": 4
+    }
+}
