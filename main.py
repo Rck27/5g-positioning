@@ -10,7 +10,7 @@ import os
 np.random.seed(42)
 
 # --- CONFIGURATION ---
-MODEL_DIR = "trained_silo_models_v1"
+MODEL_DIR = "trained_silo_models_v2"
 PREDICTOR_CONFIG = {
     'DL': {
         'onnx_lon_path': os.path.join(MODEL_DIR, 'pipeline_lon_DL.onnx'),
@@ -21,7 +21,7 @@ PREDICTOR_CONFIG = {
             'NR_UE_Nbr_PCI_0',
             #   'NR_UE_Modulation_Avg_DL_0', 'NR_UE_Timing_Advance'
         ],
-        'fusion_weight': 5.6901 # 1 / 5.2m error
+        'fusion_weight': 1.190 # 1 / 5.2m error
     },
 
     'UL': {
@@ -34,7 +34,7 @@ PREDICTOR_CONFIG = {
             #   'NR_UE_Modulation_Avg_UL_0', 'NR_UE_Timing_Advance',
             # 'NR_UE_Power_Tx_PUSCH_0'
         ],
-        'fusion_weight': 5.7596 # 1 / 8.1m error
+        'fusion_weight':  0.689
     },
     'Scanner': {
         'onnx_lon_path': os.path.join(MODEL_DIR, 'pipeline_lon_Scanner.onnx'),
@@ -73,7 +73,7 @@ PREDICTOR_CONFIG = {
 # 'NR_Scan_SSB_SINR_SortedBy_RSRP_5',
 # 'NR_Scan_SSB_SINR_SortedBy_RSRP_6',
         ],
-        'fusion_weight': 1.1501 # 1 / 4.0m error
+        'fusion_weight': 0.331125 
     }
 }
 
