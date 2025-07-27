@@ -1,0 +1,35 @@
+{
+  "DL": [
+    {
+      "timestamp": "2025-03-14T12:15:21Z",
+      "NR_UE_PCI_0": 76.0,
+      "NR_UE_RSRP_0": -76.9,
+      "NR_UE_RSRQ_0": -11.1,
+      "NR_UE_SINR_0": 8.8,
+      "NR_UE_Nbr_RSRQ_0": -15.2,
+      "NR_UE_Nbr_RSRP_0": -82.7,
+      "NR_UE_Nbr_PCI_0": 68.0
+    },
+    {
+      "timestamp": "2025-03-14T12:15:21Z",
+      "NR_UE_Pathloss_DL_0": 96.5
+    }
+  ],
+  "UL": [
+    {
+      "timestamp": "2025-03-14T12:15:21Z",
+      "NR_UE_PCI_0": 76.0,
+      "NR_UE_RSRP_0": -76.9,
+      "NR_UE_RSRQ_0": -11.1,
+      "NR_UE_SINR_0": 8.8,
+      "NR_UE_Nbr_RSRQ_0": -15.2,
+      "NR_UE_Nbr_RSRP_0": -82.7,
+      "NR_UE_Nbr_PCI_0": 68.0
+    }
+  ],
+  "Scanner": [],
+  "ground_truth": {
+    "latitude": 41.10561,
+    "longitude": 29.02778
+  }
+}

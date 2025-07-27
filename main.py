@@ -5,12 +5,13 @@ import onnxruntime as rt
 import pandas as pd
 from sklearn.impute import SimpleImputer
 import os
+from math import radians, sin, cos, sqrt, atan2, asin # <-- ADDED IMPORT
 
 # Set a seed for reproducibility, as requested by the rules.
 np.random.seed(42)
 
 # --- CONFIGURATION ---
-MODEL_DIR = "trained_silo_models_v2"
+MODEL_DIR = "trained_models"
 PREDICTOR_CONFIG = {
     'DL': {
         'onnx_lon_path': os.path.join(MODEL_DIR, 'pipeline_lon_DL.onnx'),
@@ -21,7 +22,7 @@ PREDICTOR_CONFIG = {
             'NR_UE_Nbr_PCI_0',
             #   'NR_UE_Modulation_Avg_DL_0', 'NR_UE_Timing_Advance'
         ],
-        'fusion_weight': 1.190 # 1 / 5.2m error
+        'fusion_weight': 0.934 # 1 / 5.2m error
     },
 
     'UL': {
@@ -29,12 +30,12 @@ PREDICTOR_CONFIG = {
         'onnx_lat_path': os.path.join(MODEL_DIR, 'pipeline_lat_UL.onnx'),
         'feature_cols': [
             'NR_UE_PCI_0', 'NR_UE_RSRP_0', 'NR_UE_RSRQ_0', 'NR_UE_SINR_0',
-            'NR_UE_Pathloss_DL_0', 'NR_UE_Nbr_RSRQ_0', 'NR_UE_Nbr_RSRP_0',
+             'NR_UE_Nbr_RSRQ_0', 'NR_UE_Nbr_RSRP_0',
             'NR_UE_Nbr_PCI_0',
             #   'NR_UE_Modulation_Avg_UL_0', 'NR_UE_Timing_Advance',
             # 'NR_UE_Power_Tx_PUSCH_0'
         ],
-        'fusion_weight':  0.689
+        'fusion_weight':  0.469
     },
     'Scanner': {
         'onnx_lon_path': os.path.join(MODEL_DIR, 'pipeline_lon_Scanner.onnx'),
@@ -81,6 +82,13 @@ PREDICTOR_CONFIG = {
 # --- HELPER FUNCTIONS ---
 
 # --- In your main.py file, replace the old aggregate_buffered_data function with this one ---
+
+def haversine(lat1, lon1, lat2, lon2):
+    if any(pd.isna([lat1, lon1, lat2, lon2])): return np.nan
+    lon1, lat1, lon2, lat2 = map(radians, [float(lon1), float(lat1), float(lon2), float(lat2)])
+    dlon, dlat = lon2 - lon1, lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * asin(sqrt(a)); R = 6371; return c * R * 1000
 
 def aggregate_buffered_data(data_list, feature_cols):
     # This function is already correct and efficient, no changes needed.
@@ -162,6 +170,9 @@ if __name__ == "__main__":
         print(f"Error loading or parsing JSON file: {e}")
         exit()
         
+    # --- ADDED: Extract ground truth if it exists ---
+    ground_truth = full_input_data.pop("ground_truth", None)
+    
     predictions = []
     
     # 3. Iterate through our configured predictors
@@ -219,5 +230,36 @@ if __name__ == "__main__":
 
     # 4. --- OUTPUT (This part remains the same) ---
     print("\n--- FINAL COORDINATE ---")
+
     print(f"Latitude: {final_lat:.6f}")
     print(f"Longitude: {final_lon:.6f}")
+    
+    # --- ADDED: Optional performance check ---
+# --- In your main.py, at the very end of the __main__ block ---
+
+    # --- ADDED: Optional performance check ---
+    if ground_truth:
+        print("\n--- PERFORMANCE (Ground Truth Found) ---")
+        try:
+            true_lon = ground_truth['longitude']
+            true_lat = ground_truth['latitude']
+            
+            # --- Individual Model Errors ---
+            print("Individual Model Performance:")
+            for p in predictions:
+                # Check if the prediction was successful before calculating error
+                if p['lon'] is not None and p['lat'] is not None:
+                    individual_error = haversine(true_lat, true_lon, p['lat'], p['lon'])
+                    print(f"  - {p['source']:<10s}: Error = {individual_error:>6.2f}m  (Prediction: {p['lat']:.5f}, {p['lon']:.5f})")
+                else:
+                    print(f"  - {p['source']:<10s}: No prediction was made.")
+
+            # --- Fused Result Error ---
+            fused_error = haversine(true_lat, true_lon, final_lat, final_lon)
+            print("\nFused Result Performance:")
+            print(f"  - FUSED     : Error = {fused_error:>6.2f}m  (Prediction: {final_lat:.5f}, {final_lon:.5f})")
+
+        except KeyError:
+            print("  - Ground truth object is malformed (missing 'longitude' or 'latitude').")
+        except Exception as e:
+            print(f"  - Could not calculate error: {e}")
